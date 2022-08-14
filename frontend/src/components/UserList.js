@@ -35,11 +35,7 @@ const UserList = () => {
   return (
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
-<<<<<<< HEAD
-        <Banner title="Users List Masters" />
-=======
         <Banner title="Users List Cilist Update" />
->>>>>>> staging
         <Link to={`add`} className="button is-info">
           Add New
         </Link>
