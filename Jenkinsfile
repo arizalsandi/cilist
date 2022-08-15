@@ -16,9 +16,6 @@ pipeline {
             }
         stage('Build') {
         agent { label "agent1" } // Define which agent you want to run the pipeline
-            discordSend description: "Jenkins Pipeline Build ${appName}", 
-            footer: 'Start Build', image: '', link: '', result: '', scmWebUrl: '', thumbnail: '', 
-            title: '', webhookURL: 'https://discord.com/api/webhooks/996050992539910314/zFBwffvteSg4pMuCooQdw-_RfD5gOHE6uu9VkIQl_VKw8m2GbbOH0ediI3WeYdI_8Soe'
             steps {
               // Build Image
                 script { 
