@@ -19,7 +19,16 @@ pipeline {
             steps {
               // Build Image
                 script { 
+
                 echo "Begin Build"
+
+                discordSend description: 'Jenkins Pipeline Build', 
+                footer: "Start Build $env.JOB_BASE_NAME (build #$BUILD_NUMBER)", 
+                link: "$env.BUILD_URL", 
+                result: "$currentBuild.currentResult", 
+                title: "$env.JOB_NAME",
+                webhookURL: "$DISCORD_WEBHOOK"
+
                 if (env.BRANCH_NAME == "staging")
                 { 
                 sh "docker build -t arizalsandi/cilist-client:stg-$BUILD_NUMBER frontend/. "
@@ -43,7 +52,14 @@ pipeline {
               // Deploy to Kubernetes
                 script { 
                 
-                echo "Begin to Deploy" 
+                echo "Begin to Deploy"
+
+                discordSend description: 'Jenkins Pipeline Deploy', 
+                footer: "Start Deploy $env.JOB_BASE_NAME (deploy #$BUILD_NUMBER)", 
+                link: "$env.BUILD_URL", 
+                result: "$currentBuild.currentResult", 
+                title: "$env.JOB_NAME",
+                webhookURL: "$DISCORD_WEBHOOK"
 
                 if (env.BRANCH_NAME == "staging")
                 {
